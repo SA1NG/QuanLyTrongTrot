@@ -58,6 +58,16 @@ namespace QuanLyTrongTrot
 		{
 			HeThongMoRong = !HeThongMoRong;
 			HeThongButton.Visibility = HeThongMoRong ? Visibility.Visible : Visibility.Collapsed;		}
+
+		private void TatButton_Click(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+        }
+
+		private void ThuNhoButton_Click(object sender, RoutedEventArgs e)
+		{
+			this.WindowState = WindowState.Minimized;
+		}
 	}
 }
 
