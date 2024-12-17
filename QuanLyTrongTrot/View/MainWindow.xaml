@@ -1,0 +1,299 @@
+﻿<Window x:Class="QuanLyTrongTrot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyTrongTrot"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="800"
+        Width="1400"       
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="{x:Null}"
+        WindowStartupLocation="CenterScreen">
+    <materialDesign:Card Background="{DynamicResource MaterialDesignPaper}" >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:ColorZone Grid.Column="0" Background="White">
+                <!-- logo-->
+                <StackPanel Height="800">
+                    <WrapPanel Margin="0 20 5 50" HorizontalAlignment="Center">
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Image/logo.png" Height="80" Width="80"/>
+                        <TextBlock FontSize="17" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="44">
+                Quản Lý
+                <LineBreak />
+                Trồng Trọt
+                        </TextBlock>
+                    </WrapPanel>
+
+                    <StackPanel Height="auto">
+                        <!--nut trang chu-->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                            Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+                            materialDesign:ButtonAssist.CornerRadius="6" 
+                            Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
+                            Margin="0 0 0 0" >
+                            <WrapPanel Width="190" >
+                                <materialDesign:PackIcon Kind="Home" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                <TextBlock Width="110" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" >
+                                Trang Chủ
+                                </TextBlock>
+                            </WrapPanel>
+                        </Button>
+
+                        <!--nut hanh chinh-->
+                        <Button Name="HanhChinhButton" 
+    Style="{StaticResource MaterialDesignFlatButton}" 
+    Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+    materialDesign:ButtonAssist.CornerRadius="6" 
+    Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
+    Click="HanhChinhButton_Click">
+                            <WrapPanel Width="190">
+                                <materialDesign:PackIcon Kind="City" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="20">
+        Hành Chính
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                            </WrapPanel>
+                        </Button>
+
+                        <!--cac nut con cua hanh chinh-->
+                        <StackPanel Name="HanhChinhConButton" Visibility="Collapsed">
+                            <!--nut con 1-->
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+        Width="190" Height="40" Margin="0 5 0 0" >
+                                <WrapPanel Width="190">
+                                    <materialDesign:PackIcon Kind="Magnify" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                    <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+                Tìm Kiếm
+                                    </TextBlock>
+                                </WrapPanel>
+                            </Button>
+                            <!--nut con 2-->
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+        Width="190" Height="40" Margin="0 5 0 0" >
+                                <WrapPanel Width="190">
+                                    <materialDesign:PackIcon Kind="Domain" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                    <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+            Cấp Độ
+                                    </TextBlock>
+                                </WrapPanel>
+                            </Button>
+                        </StackPanel>
+                        <!--nut giong cay trong-->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+    Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+    materialDesign:ButtonAssist.CornerRadius="6" 
+    Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
+    Margin="0 0 0 0" Click="GiongCayTrongButton_Click" >
+                            <WrapPanel Width="190" >
+                                <materialDesign:PackIcon Kind="Leaf" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="20" >
+            Giống Cây
+            <LineBreak/>
+            Trồng
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            </WrapPanel>
+                        </Button>
+                        <!--cac nut con giong cay trong-->
+                        <StackPanel Name="GiongCayTrongConButton" Visibility="Collapsed">
+                            <!--nut con 1-->
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+        Width="190" Height="40" Margin="0 5 0 0" >
+                                <WrapPanel Width="190">
+                                    <materialDesign:PackIcon Kind="Apps" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                    <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+            Phân Loại
+                                    </TextBlock>
+                                </WrapPanel>
+                            </Button>
+                            <!--nut con 2-->
+                            <Button 
+                                Style="{StaticResource MaterialDesignFlatButton}"
+        Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+        Width="190" Height="40" Margin="0 5 0 0" >
+                                <WrapPanel Width="190">
+                                    <materialDesign:PackIcon Kind="MapMarkerRadiusOutline" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                    <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+            Vùng Trồng
+                                    </TextBlock>
+                                </WrapPanel>
+                            </Button>
+                        </StackPanel>
+                        <!--nut phan bon-->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+    Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+    materialDesign:ButtonAssist.CornerRadius="6" 
+    Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
+    Margin="0 0 0 0" Click="PhanBonButton_Click" >
+                            <WrapPanel Width="190" >
+                                <materialDesign:PackIcon Kind="SoySauce" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="20" >
+            Phân Bón
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                            </WrapPanel>
+                        </Button>
+                        <!--cac nut con phan bon-->
+                        <StackPanel Name="PhanBonConButton" Visibility="Collapsed">
+                            <!--nut con 1-->
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+Width="190" Height="40" Margin="0 5 0 0" >
+                                <WrapPanel Width="190">
+                                    <materialDesign:PackIcon Kind="Apps" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                    <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+    Phân Loại
+                                    </TextBlock>
+                                </WrapPanel>
+                            </Button>
+                            <!--nut con 2-->
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+Width="190" Height="40" Margin="0 5 0 0" >
+                                <WrapPanel Width="190">
+                                    <materialDesign:PackIcon Kind="Shop" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                    <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+    Cơ Sở
+                                    </TextBlock>
+                                </WrapPanel>
+                            </Button>
+                        </StackPanel>
+
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+    Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+    materialDesign:ButtonAssist.CornerRadius="6" 
+    Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
+    Margin="0 0 0 0" Click="ThuocbvtvButton_Click" >
+                            <WrapPanel Width="190" >
+                                <materialDesign:PackIcon Kind="MedicalBag" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                <TextBlock Width="125" VerticalAlignment="Bottom"  FontSize="20" >
+            Thuốc Bảo Vệ
+            <LineBreak/>
+            Thực Vật
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            </WrapPanel>
+                        </Button>
+                        <!--cac nut con thuoc bao ve thuc vat-->
+                        <StackPanel Name="ThuocbvtvButton" Visibility="Collapsed">
+                            <!--nut con 1-->
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+Width="190" Height="40" Margin="0 5 0 0" >
+                                <WrapPanel Width="190">
+                                    <materialDesign:PackIcon Kind="Apps" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                    <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+    Phân Loại
+                                    </TextBlock>
+                                </WrapPanel>
+                            </Button>
+                            <!--nut con 2-->
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
+Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+Width="190" Height="40" Margin="0 5 0 0" >
+                                <WrapPanel Width="190">
+                                    <materialDesign:PackIcon Kind="Shop" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                    <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+    Cơ Sở
+                                    </TextBlock>
+                                </WrapPanel>
+                            </Button>
+                        </StackPanel>
+
+
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+    Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+    materialDesign:ButtonAssist.CornerRadius="6" 
+    Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
+    Margin="0 0 0 0" >
+                            <WrapPanel Width="195" >
+                                <materialDesign:PackIcon Kind="Skull" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                <TextBlock Width="155" VerticalAlignment="Bottom"  FontSize="20" >
+        Sinh Vật Gây Hại
+        <LineBreak/>
+        Và Tuổi Sâu
+                                </TextBlock>
+                            </WrapPanel>
+
+                        </Button>
+
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+    Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+    materialDesign:ButtonAssist.CornerRadius="6" 
+    Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
+    Margin="0 0 0 0" >
+                            <WrapPanel Width="190" >
+                                <materialDesign:PackIcon Kind="GoogleMaps" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                <TextBlock Width="150" VerticalAlignment="Bottom"  FontSize="20" >
+        Bản Đồ
+                                </TextBlock>
+                            </WrapPanel>
+
+                        </Button>
+
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
+materialDesign:ButtonAssist.CornerRadius="6" 
+Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
+Margin="0 0 0 0" Click="HeThongButton_Click" >
+                            <WrapPanel Width="190" >
+                                <materialDesign:PackIcon Kind="Settings" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                <TextBlock Width="120" VerticalAlignment="Bottom"  FontSize="20" >
+        Hệ Thống
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                            </WrapPanel>
+                        </Button>
+
+                        <StackPanel Name="HeThongButton" Visibility="Collapsed">
+                            <!--nut con 1-->
+                            <Button Content="Quản Lý Người Dùng" Style="{StaticResource MaterialDesignFlatButton}"
+Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+Width="190" Height="40" Margin="0 5 0 0" HorizontalContentAlignment="Left"/>
+                            <!--nut con 2-->
+                            <Button Content="Lịch Sử Truy Cập" Style="{StaticResource MaterialDesignFlatButton}"
+Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+Width="190" Height="40" Margin="0 5 0 0" HorizontalContentAlignment="Left"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:ColorZone>
+            <materialDesign:ColorZone Grid.Column="1" Background="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:ColorZone Grid.Row="0" Background="White">
+                        <StackPanel Width="80" Height="40" HorizontalAlignment="Right">
+                            <Button Width="40" Height="40" HorizontalAlignment="Left" Margin="0 0 0 0">
+
+                            </Button>
+
+                            <Button Width="40" Height="40" HorizontalAlignment="Right" Padding="0" 
+                                Style="{DynamicResource MaterialDesignFlatButton}" Margin="0 0 0 0"
+                                Foreground="{DynamicResource MaterialDesignBodyLight}"
+                                materialDesign:ButtonAssist.CornerRadius="0" >
+                                <materialDesign:PackIcon Kind="WindowClose" HorizontalAlignment="Center" Height="37" Width="37" >
+                                </materialDesign:PackIcon>
+                            </Button>
+
+                        </StackPanel>
+                    </materialDesign:ColorZone>
+                </Grid>
+            </materialDesign:ColorZone>
+        </Grid>
+    </materialDesign:Card>
+
+
+</Window> 
