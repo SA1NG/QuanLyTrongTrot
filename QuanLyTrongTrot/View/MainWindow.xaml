@@ -19,12 +19,13 @@
                 <ColumnDefinition Width="230"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <materialDesign:ColorZone Grid.Column="0" Background="White">
+            
+            <materialDesign:ColorZone Grid.Column="0" Background="White" CornerRadius="15 0 0 15">
                 <!-- logo-->
                 <StackPanel Height="800">
-                    <WrapPanel Margin="0 20 5 50" HorizontalAlignment="Center">
+                    <WrapPanel Margin="0 35 5 50" HorizontalAlignment="Center">
                         <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Image/logo.png" Height="80" Width="80"/>
-                        <TextBlock FontSize="17" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="44">
+                        <TextBlock FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="44">
                 Quản Lý
                 <LineBreak />
                 Trồng Trọt
@@ -37,7 +38,7 @@
                             Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
                             materialDesign:ButtonAssist.CornerRadius="6" 
                             Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
-                            Margin="0 0 0 0" >
+                            Margin="0 0 0 0" Click="TrangChuButton_Click" >
                             <WrapPanel Width="190" >
                                 <materialDesign:PackIcon Kind="Home" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
                                 <TextBlock Width="110" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" >
@@ -215,7 +216,7 @@ Width="190" Height="40" Margin="0 5 0 0" >
     Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
     materialDesign:ButtonAssist.CornerRadius="6" 
     Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
-    Margin="0 0 0 0" >
+    Margin="0 0 0 0" Click="SinhVatGayHaiButton_Click" >
                             <WrapPanel Width="195" >
                                 <materialDesign:PackIcon Kind="Skull" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
                                 <TextBlock Width="155" VerticalAlignment="Bottom"  FontSize="20" >
@@ -229,7 +230,7 @@ Width="190" Height="40" Margin="0 5 0 0" >
 
                         <Button Style="{StaticResource MaterialDesignFlatButton}"
     Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 
-    materialDesign:ButtonAssist.CornerRadius="6" 
+    materialDesign:ButtonAssist.CornerRadius="6" Click="BanDoButton_Click"
     Width="auto" Height="60" materialDesign:RippleAssist.Feedback="White" 
     Margin="0 0 0 0" >
                             <WrapPanel Width="190" >
@@ -271,32 +272,33 @@ Width="190" Height="40" Margin="0 5 0 0" HorizontalContentAlignment="Left"/>
             <materialDesign:ColorZone Grid.Column="1" Background="White">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="33"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <materialDesign:ColorZone Grid.Row="0" Background="White">
-                        <StackPanel Width="80" Height="40" HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Button Width="40" Height="40" HorizontalAlignment="Left" Margin="0"
-                                   Foreground="{DynamicResource MaterialDesignBodyLight}"
-                                    Style="{DynamicResource MaterialDesignFlatButton}"
-                                    materialDesign:ButtonAssist.CornerRadius="0"
-                                    Padding="0 0 0 0" Click="ThuNhoButton_Click" >
-                                <materialDesign:PackIcon Kind="WindowMinimize" Height="30" Width="40"/>
+                    <materialDesign:ColorZone Grid.Row="0" Background="White" Height="30">
+                        <StackPanel Width="60" Height="30" HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Button Width="30" Height="30" HorizontalAlignment="Left" Margin="0"
+               Foreground="{DynamicResource MaterialDesignBodyLight}"
+                Style="{DynamicResource MaterialDesignFlatButton}"
+                materialDesign:ButtonAssist.CornerRadius="0"
+                Padding="0 0 0 0" Click="ThuNhoButton_Click" >
+                                <materialDesign:PackIcon Kind="WindowMinimize" Height="20" Width="30"/>
                             </Button>
 
-                            <Button Width="40" Height="40" HorizontalAlignment="Right" Padding="0"
-                                Style="{DynamicResource MaterialDesignFlatButton}" Margin="0"
-                                Foreground="{DynamicResource MaterialDesignBodyLight}"
-                                materialDesign:ButtonAssist.CornerRadius="0"
-                                    Click="TatButton_Click" >
-                                <materialDesign:PackIcon Kind="WindowClose" HorizontalAlignment="Center" Height="37" Width="37" />
+                            <Button Width="30" Height="30" HorizontalAlignment="Right" Padding="0"
+            Style="{DynamicResource MaterialDesignFlatButton}" Margin="0"
+            Foreground="{DynamicResource MaterialDesignBodyLight}"
+            materialDesign:ButtonAssist.CornerRadius="0"
+                Click="TatButton_Click" >
+                                <materialDesign:PackIcon Kind="WindowClose" HorizontalAlignment="Center" Height="27" Width="27" />
                             </Button>
                         </StackPanel>
+                    </materialDesign:ColorZone>
+                    <materialDesign:ColorZone Grid.Row="1" Background="White">
+                        <ContentControl x:Name="MainPage" Height="762" Margin="5 0 5 0"/>
                     </materialDesign:ColorZone>
                 </Grid>
             </materialDesign:ColorZone>
         </Grid>
     </materialDesign:Card>
-
-
 </Window> 

@@ -36,28 +36,25 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
                 <TextBlock HorizontalAlignment="Left" Height="58" Margin="32,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295"><Run Language="vi-vn" Text="Chào Mừng" FontSize="45" FontFamily="Georgia Pro Black" BaselineAlignment="Center" Foreground="#FF06AF2F"/></TextBlock>
-                <Rectangle HorizontalAlignment="Left" Height="50" Margin="0,83,0,0" Stroke="Black" VerticalAlignment="Top" Width="359" RadiusX="22.1" RadiusY="22.1" Fill="#FFE8E8E8"/>
                 <TextBox
                     materialDesign:HintAssist.Hint="Tài Khoản"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,85,30,271" />
-                <Rectangle HorizontalAlignment="Center" Height="50" Margin="0,143,0,0" Stroke="Black" VerticalAlignment="Top" Width="359" RadiusX="22.1" RadiusY="22.1" Fill="#FFE8E8E8"/>
                 <TextBox
                     materialDesign:HintAssist.Hint="Email"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,145,30,211" />
-                <Rectangle HorizontalAlignment="Center" Height="50" Margin="0,204,0,0" Stroke="Black" VerticalAlignment="Top" Width="359" RadiusX="22.1" RadiusY="22.1" Fill="#FFE8E8E8"/>
                 <PasswordBox
                         x:Name="FloatingPasswordBox"
                         materialDesign:HintAssist.Hint="Mật Khẩu"
                         Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
                         Margin="26,206,29,150" />
-                <Rectangle HorizontalAlignment="Center" Height="50" Margin="0,259,0,0" Stroke="Black" VerticalAlignment="Top" Width="359" RadiusX="22.1" RadiusY="22.1" Fill="#FFE8E8E8"/>
                 <PasswordBox x:Name="FloatingPasswordBox1"
                     materialDesign:HintAssist.Hint="Nhập Lại Mật Khẩu"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="26,261,29,95" />
                 <Button
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
                     ToolTip="Resource name: MaterialDesignRaisedAccentButton"
-                    materialDesign:RippleAssist.Feedback="#DD000000" Margin="53,342,53,10" Height="50" Content="Tạo tài khoản" BorderBrush="#FF262625" Foreground="#DDFFFFFF" FontSize="20"/>
+                    materialDesign:ButtonAssist.CornerRadius="15"
+                    materialDesign:RippleAssist.Feedback="#DD000000" Margin="53,342,53,10" Height="50" Content="Tạo tài khoản" Foreground="#DDFFFFFF" FontSize="20"/>
             </Grid>
             <TextBlock HorizontalAlignment="Left" Height="21" Margin="281,464,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="Đã có tài khoản?"/>
             <Button Content="Đăng Nhập" HorizontalAlignment="Left" Height="21" Margin="357,462,0,0" VerticalAlignment="Top" Width="85" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFB2F300" FontSize="10"/>
