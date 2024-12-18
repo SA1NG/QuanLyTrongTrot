@@ -40,9 +40,11 @@
                 </Grid.RenderTransform>
                 <TextBlock HorizontalAlignment="Left" Height="58" Margin="32,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295"><Run Language="vi-vn" Text="Chào Mừng" FontSize="45" FontFamily="Georgia Pro Black" BaselineAlignment="Center" Foreground="#FF06AF2F"/></TextBlock>
                 <TextBox
+                    x:Name="Username"
                     materialDesign:HintAssist.Hint="Tài Khoản"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,85,30,271" />
                 <TextBox
+                    x:Name="Email"
                     materialDesign:HintAssist.Hint="Email"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="25,145,30,211" />
                 <PasswordBox
@@ -57,7 +59,9 @@
                     Style="{StaticResource MaterialDesignRaisedAccentButton}"
                     ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                     materialDesign:ButtonAssist.CornerRadius="15"
+                    Click="SignUpButton_Click"
                     materialDesign:RippleAssist.Feedback="#DD000000" Margin="53,342,53,10" Height="50" Content="Tạo tài khoản" Foreground="#DDFFFFFF" FontSize="20"/>
+          
             </Grid>
             <TextBlock HorizontalAlignment="Left" Height="21" Margin="281,464,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Text="Đã có tài khoản?"/>
             <Button Content="Đăng Nhập" HorizontalAlignment="Left" Height="21" Margin="357,462,0,0" VerticalAlignment="Top" Width="85" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFB2F300" FontSize="10"/>

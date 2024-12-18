@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Model\Account.cs" />
     <Compile Include="View\BanDoPage.xaml.cs">
       <DependentUpon>BanDoPage.xaml</DependentUpon>
     </Compile>
@@ -205,9 +206,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="View\Image\logo.png" />
   </ItemGroup>
