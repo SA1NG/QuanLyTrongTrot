@@ -93,6 +93,27 @@
     <Compile Include="View\TrangChuPage.xaml.cs">
       <DependentUpon>TrangChuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vst\Data\BsonDataMap.cs" />
+    <Compile Include="vst\Data\Collection.cs" />
+    <Compile Include="vst\Data\Database.cs" />
+    <Compile Include="vst\Data\Document.cs" />
+    <Compile Include="vst\Data\ObjectId.cs" />
+    <Compile Include="vst\Json\%28MD5%29.cs" />
+    <Compile Include="vst\Json\DataContext.cs" />
+    <Compile Include="vst\Json\Document.cs" />
+    <Compile Include="vst\Json\Network.cs" />
+    <Compile Include="vst\Json\ObjectExtension.cs" />
+    <Compile Include="vst\Json\ShareMemory.cs" />
+    <Compile Include="vst\Json\StringExtension.cs" />
+    <Compile Include="vst\Json\TypeExtension.cs" />
+    <Compile Include="vst\Json\VietUnicode.cs" />
+    <Compile Include="vst\MVC\ActionResult.cs" />
+    <Compile Include="vst\MVC\Controller.cs" />
+    <Compile Include="vst\MVC\Engine.cs" />
+    <Compile Include="vst\MVC\RequestContext.cs" />
+    <Compile Include="vst\MVC\Session.cs" />
+    <Compile Include="vst\MVC\View.cs" />
+    <Compile Include="vst\MVC\ViewDataDictionary.cs" />
     <Page Include="View\BanDoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,6 +209,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo_Mqo_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="vst\Newtonsoft.Json.Bson.dll" />
+    <Content Include="vst\Newtonsoft.Json.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.3.0\build\MaterialDesignThemes.targets')" />
