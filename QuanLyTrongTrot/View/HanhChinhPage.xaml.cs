@@ -28,11 +28,11 @@ namespace QuanLyTrongTrot.View
         public HanhChinhPage()
         {
             InitializeComponent();
-            LoadData();  // Gọi hàm LoadData để tải dữ liệu
+            //LoadData();  // Gọi hàm LoadData để tải dữ liệu
         }
 
         // Hàm tải dữ liệu từ SQL Server vào DataGrid
-        private void LoadData()
+        /*private void LoadData()
         {
             try
             {
@@ -55,7 +55,7 @@ namespace QuanLyTrongTrot.View
             {
                 MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
             }
-        }
+        } */
 
         // Hàm thêm đơn vị hành chính mới
         private void AddDonVi(string maDonVi, string tenDonVi, int capDoID, string capTrenID)
@@ -109,7 +109,7 @@ namespace QuanLyTrongTrot.View
         }
 
         // Sự kiện khi nhấn nút "Thêm Đơn Vị"
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        /*private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             // Lấy thông tin đơn vị từ TextBox hoặc các nguồn khác
             string maDonVi = "DV001";
@@ -119,15 +119,15 @@ namespace QuanLyTrongTrot.View
 
             AddDonVi(maDonVi, tenDonVi, capDoID, capTrenID);  // Gọi hàm thêm đơn vị
             LoadData();  // Tải lại dữ liệu sau khi thêm
-        }
+        }*/
 
         // Sự kiện khi nhấn nút "Xóa Đơn Vị"
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+       /* private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             string maDonVi = "DV001";  // Mã đơn vị cần xóa, lấy từ TextBox hoặc các nguồn khác
 
             DeleteDonVi(maDonVi);  // Gọi hàm xóa đơn vị
             LoadData();  // Tải lại dữ liệu sau khi xóa
-        }
+        }*/
     }
 }

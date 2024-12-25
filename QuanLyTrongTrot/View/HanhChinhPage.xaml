@@ -5,11 +5,79 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuanLyTrongTrot.View"
              mc:Ignorable="d" 
-                          d:DesignHeight="762" d:DesignWidth="1160">
+             d:DesignHeight="762" d:DesignWidth="1195">
     <Grid>
-        <Border Background="Red" CornerRadius="15 0 0 0">
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Background="LightPink"  >
+            <GroupBox Foreground="BurlyWood" Background="White" Margin="250,100" Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Padding="5">
+                        <TextBlock Text="ID" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Padding="5">
+                        <TextBox x:Name="txtID" />
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Padding="5">
+                        <TextBlock Text="Tên Cấp Độ:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Padding="5">
+                        <TextBox x:Name="txtTenCapDo" />
+                    </Border>
+                </Grid>
+            </GroupBox>
         </Border>
-
+        <Border Background="White">
+                <GroupBox Margin="1" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="195" />
+                            <ColumnDefinition Width="585" />
+                            <ColumnDefinition Width="195"/>
+                            <ColumnDefinition Width="195" />
+                    </Grid.ColumnDefinitions>
+                        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="Mã Đơn Vị:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtMadonvi" />
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="Tên Đơn Vị:" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtTendonvi" />
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="Cấp Độ ID:" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtCapdoID" />
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="Cấp Trên ID:" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtCaptrenID" />
+                        </Border>
+                    </Grid>
+                </GroupBox>
+            </Border>
     </Grid>
 </UserControl>
