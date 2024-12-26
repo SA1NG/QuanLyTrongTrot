@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
-            <materialDesign:ColorZone Grid.Column="0" Background="White" CornerRadius="15 0 0 15">
+            <materialDesign:ColorZone Grid.Column="0" Background="Gray"  CornerRadius="15 0 0 15">
                 <!-- logo-->
                 <StackPanel Height="800">
                     <WrapPanel Margin="0 35 5 50" HorizontalAlignment="Center">
@@ -59,24 +59,24 @@
                                     <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="20">
         Hành Chính
                                     </TextBlock>
-                                    <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                                   <!-- <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25" VerticalAlignment="Bottom" HorizontalAlignment="Right"/> -->
                                 </WrapPanel>
                             </Button>
 
-                            <!--cac nut con cua hanh chinh-->
+                            <!--cac nut con cua hanh chinh
                             <StackPanel Name="HanhChinhConButton" Visibility="Collapsed">
-                                <!--nut con 1-->
-                                <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                nut con 1
+                            <Button Style="{StaticResource MaterialDesignFlatButton}"
         Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
         Width="190" Height="40" Margin="0 5 0 0" >
-                                    <WrapPanel Width="190">
-                                        <materialDesign:PackIcon Kind="Magnify" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
-                                        <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+                                <WrapPanel Width="190">
+                                    <materialDesign:PackIcon Kind="Magnify" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                    <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
                 Tìm Kiếm
-                                        </TextBlock>
-                                    </WrapPanel>
-                                </Button>
-                                <!--nut con 2-->
+                                    </TextBlock>
+                                </WrapPanel>
+                            </Button> -->
+                            <!--nut con 2
                                 <Button Style="{StaticResource MaterialDesignFlatButton}"
         Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
         Width="190" Height="40" Margin="0 5 0 0" >
@@ -86,8 +86,8 @@
             Cấp Độ
                                         </TextBlock>
                                     </WrapPanel>
-                                </Button>
-                            </StackPanel>
+                                </Button> 
+                            </StackPanel> -->
                             <!--nut giong cay trong-->
                             <Button Style="{StaticResource MaterialDesignFlatButton}"
     Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 

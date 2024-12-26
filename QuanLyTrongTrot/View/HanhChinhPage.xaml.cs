@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Globalization;
 
 namespace QuanLyTrongTrot.View
 {
@@ -29,6 +30,18 @@ namespace QuanLyTrongTrot.View
         {
             InitializeComponent();
             //LoadData();  // Gọi hàm LoadData để tải dữ liệu
+        }
+        public class StringToVisibilityConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                return string.IsNullOrWhiteSpace(value as string) ? Visibility.Visible : Visibility.Collapsed;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         // Hàm tải dữ liệu từ SQL Server vào DataGrid
