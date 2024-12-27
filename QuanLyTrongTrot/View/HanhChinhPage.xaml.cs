@@ -29,23 +29,11 @@ namespace QuanLyTrongTrot.View
         public HanhChinhPage()
         {
             InitializeComponent();
-            //LoadData();  // Gọi hàm LoadData để tải dữ liệu
-        }
-        public class StringToVisibilityConverter : IValueConverter
-        {
-            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-            {
-                return string.IsNullOrWhiteSpace(value as string) ? Visibility.Visible : Visibility.Collapsed;
-            }
-
-            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-            {
-                throw new NotImplementedException();
-            }
+           LoadData();  // Gọi hàm LoadData để tải dữ liệu
         }
 
         // Hàm tải dữ liệu từ SQL Server vào DataGrid
-        /*private void LoadData()
+        private void LoadData()
         {
             try
             {
@@ -60,15 +48,14 @@ namespace QuanLyTrongTrot.View
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);  // Lưu dữ liệu vào DataTable
 
-                    // Gán dữ liệu vào DataGrid
-                    dataGrid.ItemsSource = dataTable.DefaultView;  // Sử dụng ItemsSource thay vì DataContext
+                   
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
             }
-        } */
+        } 
 
         // Hàm thêm đơn vị hành chính mới
         private void AddDonVi(string maDonVi, string tenDonVi, int capDoID, string capTrenID)
@@ -122,25 +109,25 @@ namespace QuanLyTrongTrot.View
         }
 
         // Sự kiện khi nhấn nút "Thêm Đơn Vị"
-        /*private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void addbutton_click(object sender)
         {
-            // Lấy thông tin đơn vị từ TextBox hoặc các nguồn khác
-            string maDonVi = "DV001";
-            string tenDonVi = "Đơn vị 1";
-            int capDoID = 1;  // Chọn cấp độ từ một ComboBox chẳng hạn
-            string capTrenID = null;  // Cấp trên có thể là null nếu không có cấp trên
+            // lấy thông tin đơn vị từ textbox hoặc các nguồn khác
+            string madonvi = "dv001";
+            string tendonvi = "đơn vị 1";
+            int capdoid = 1;  // chọn cấp độ từ một combobox chẳng hạn
+            string captrenid = null;  // cấp trên có thể là null nếu không có cấp trên
 
-            AddDonVi(maDonVi, tenDonVi, capDoID, capTrenID);  // Gọi hàm thêm đơn vị
-            LoadData();  // Tải lại dữ liệu sau khi thêm
-        }*/
+            AddDonVi(madonvi, tendonvi, capdoid, captrenid);  // gọi hàm thêm đơn vị
+            LoadData();  // tải lại dữ liệu sau khi thêm
+        }
 
-        // Sự kiện khi nhấn nút "Xóa Đơn Vị"
-       /* private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        // sự kiện khi nhấn nút "xóa đơn vị"
+         private void deletebutton_click(object sender)
         {
-            string maDonVi = "DV001";  // Mã đơn vị cần xóa, lấy từ TextBox hoặc các nguồn khác
+           string madonvi = "dv001";  // mã đơn vị cần xóa, lấy từ textbox hoặc các nguồn khác
 
-            DeleteDonVi(maDonVi);  // Gọi hàm xóa đơn vị
-            LoadData();  // Tải lại dữ liệu sau khi xóa
-        }*/
-    }
+           DeleteDonVi(madonvi);  // gọi hàm xóa đơn vị
+          LoadData();  // tải lại dữ liệu sau khi xóa
+         }
+}
 }
