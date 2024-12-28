@@ -9,7 +9,7 @@ namespace QuanLyTrongTrot.Model
 {
     partial class ViewDonVi
     {
-        public string TenDayDu => $"{TenDonVi}";
+        public string TenDayDu => $"{}";
     }
     partial class DonVi
     {
@@ -24,13 +24,13 @@ namespace QuanLyTrongTrot.Model
             }
         }
         static public int? CapHanhChinhDangXuLy { get; set; }
-        static public List<ViewDonVi> DanhSach(int? cap)
+        static public List<ViewDonVi> DanhSach(string cap)
         {
             if (cap == null)
                 return All;
 
             var lst = new List<ViewDonVi>();
-            lst.AddRange(All.Where(x => x.CapDoID == cap).OrderBy(x => x.Ten));
+            lst.AddRange(All.Where(x => x.TenDayDu == cap).OrderBy(x => x.TenDayDu));
             return lst;
         }
 

@@ -75,28 +75,15 @@
     </ApplicationDefinition>
     <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Converter.cs" />
-    <Compile Include="Model\CapDoHanhChinh.cs" />
     <Compile Include="Model\CapDoHanhChinhProvider.cs" />
     <Compile Include="Model\CayTrong.cs" />
     <Compile Include="Model\CoSo.cs" />
     <Compile Include="Model\DonVi.cs" />
-    <Compile Include="Model\DonViHanhChinh.cs" />
     <Compile Include="Model\DonViHanhChinhProvider.cs" />
-    <Compile Include="Model\LichSuTruyCap.cs" />
-    <Compile Include="Model\LoaiCayTrong.cs" />
-    <Compile Include="Model\LoaiCoSo.cs" />
     <Compile Include="Model\Migrate.cs" />
-    <Compile Include="Model\NguoiDung.cs" />
-    <Compile Include="Model\PhanBon.cs" />
     <Compile Include="Model\Provider.cs" />
-    <Compile Include="Model\SinhVatGayHaiVaTuoiSau.cs" />
-    <Compile Include="Model\SoLieuThongKe.cs" />
-    <Compile Include="Model\ThuocBVTV.cs" />
-    <Compile Include="Model\ToaDo.cs" />
     <Compile Include="Model\UpdateContext.cs" />
-    <Compile Include="Model\VaiTro.cs" />
     <Compile Include="Model\VaiTroProvider.cs" />
-    <Compile Include="Model\VungTrong.cs" />
     <Compile Include="View\BanDoPage.xaml.cs">
       <DependentUpon>BanDoPage.xaml</DependentUpon>
     </Compile>
@@ -239,6 +226,8 @@
     <Resource Include="logo_Mqo_icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SQL\Database.sql" />
+    <Content Include="SQL\Procs.sql" />
     <Content Include="vst\Newtonsoft.Json.Bson.dll" />
     <Content Include="vst\Newtonsoft.Json.dll" />
   </ItemGroup>
