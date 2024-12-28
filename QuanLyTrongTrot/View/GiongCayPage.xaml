@@ -7,6 +7,103 @@
              mc:Ignorable="d" 
                          d:DesignHeight="762" d:DesignWidth="1160">
     <Grid>
-        
+        <Grid>
+            <!-- Define Row Structure -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!-- Main Content -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="139*"/>
+                    <ColumnDefinition Width="61*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Background="Snow" Margin="26,106,37,21">
+                    <GroupBox.Template>
+                        <ControlTemplate TargetType="GroupBox">
+                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                                <StackPanel>
+                                    <!-- Taskbar Tìm Kiếm -->
+                                    <DockPanel Margin="7,-4,261,4">
+                                        <Grid Width="300" Height="30" Margin="5">
+                                            <!-- TextBox để nhập tìm kiếm -->
+                                            <TextBox x:Name="txtSearch" VerticalAlignment="Center" Margin="0,0,-29,0" />
+                                            <!-- Placeholder -->
+                                            <TextBlock Text="Tìm kiếm theo tên"
+                Foreground="Gray" 
+                VerticalAlignment="Center"
+                Margin="5,0,0,0"
+                IsHitTestVisible="False"
+                Visibility="{Binding Text, ElementName=txtSearch, Converter={StaticResource StringToVisibilityConverter}}" />
+                                        </Grid>
+                                        <Button x:Name="btnSearch" Content="Tìm kiếm" Width="94" Height="30" Margin="5" Background="AliceBlue" />
+                                    </DockPanel>
+                                    <ContentPresenter Margin="10" />
+                                </StackPanel>
+                            </Border>
+                        </ControlTemplate>
+                    </GroupBox.Template>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="240" />
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="240"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <!--ID Cấp độ hành chính -->
+                        <Border Grid.Row="0" Grid.Column="0"  BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="ID" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="0"  BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtID"/>
+                        </Border>
+                        <!--Tên cấp độ hành chính-->
+                        <Border Grid.Row="0" Grid.Column="1"  BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="Tên Giống Cây" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtTenGiongCay"/>
+                        </Border>
+                        <!-- Mã Đơn Vị -->
+                        <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="ID Loại Cây Trồng" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtIDLoaiCayTrong" />
+                        </Border>
+
+                        <!-- Tên Đơn Vị -->
+                        <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="Tình trạng lưu hành" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtTinhTrangLuuHanh" />
+                        </Border>
+
+                        <!-- Cấp Độ ID -->
+                        <Border Grid.Row="0" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="Mô tả" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtMoTa" />
+                        </Border>
+
+                        <!-- Cấp Trên ID -->
+                        <Border Grid.Row="0" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBlock Text="Cấp Trên ID" VerticalAlignment="Center" />
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Padding="5">
+                            <TextBox x:Name="txtCaptrenID" />
+                        </Border>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

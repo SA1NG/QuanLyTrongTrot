@@ -75,6 +75,28 @@
     </ApplicationDefinition>
     <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Converter.cs" />
+    <Compile Include="Model\CapDoHanhChinh.cs" />
+    <Compile Include="Model\CapDoHanhChinhProvider.cs" />
+    <Compile Include="Model\CayTrong.cs" />
+    <Compile Include="Model\CoSo.cs" />
+    <Compile Include="Model\DonVi.cs" />
+    <Compile Include="Model\DonViHanhChinh.cs" />
+    <Compile Include="Model\DonViHanhChinhProvider.cs" />
+    <Compile Include="Model\LichSuTruyCap.cs" />
+    <Compile Include="Model\LoaiCayTrong.cs" />
+    <Compile Include="Model\LoaiCoSo.cs" />
+    <Compile Include="Model\Migrate.cs" />
+    <Compile Include="Model\NguoiDung.cs" />
+    <Compile Include="Model\PhanBon.cs" />
+    <Compile Include="Model\Provider.cs" />
+    <Compile Include="Model\SinhVatGayHaiVaTuoiSau.cs" />
+    <Compile Include="Model\SoLieuThongKe.cs" />
+    <Compile Include="Model\ThuocBVTV.cs" />
+    <Compile Include="Model\ToaDo.cs" />
+    <Compile Include="Model\UpdateContext.cs" />
+    <Compile Include="Model\VaiTro.cs" />
+    <Compile Include="Model\VaiTroProvider.cs" />
+    <Compile Include="Model\VungTrong.cs" />
     <Compile Include="View\BanDoPage.xaml.cs">
       <DependentUpon>BanDoPage.xaml</DependentUpon>
     </Compile>
@@ -206,9 +228,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="View\Image\logo.png" />
   </ItemGroup>
