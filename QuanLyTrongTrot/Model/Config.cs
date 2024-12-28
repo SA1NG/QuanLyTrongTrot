@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace QuanLyTrongTrot.Model
 {
+   
     public class Config
     {
         static public Document System { get; private set; }
         static public void Load(string path)
         {
             Func<string, Document> read = s => {
-                using (var sr = new IO.StreamReader(path + s + ".json"))
+                using (var sr = new System.IO.StreamReader(path + s + ".json"))
                 {
                     var text = sr.ReadToEnd();
                     return Document.Parse(text);

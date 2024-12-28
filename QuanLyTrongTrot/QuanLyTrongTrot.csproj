@@ -73,6 +73,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actors\ActionContext.cs" />
+    <Compile Include="Actors\User.cs" />
     <Compile Include="Controller\BaseController.cs" />
     <Compile Include="Controller\DoiMatKhau.cs" />
     <Compile Include="Controller\HanhChinhController.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\ActionManager.cs" />
     <Compile Include="Model\Config.cs" />
     <Compile Include="Model\DonVi.cs" />
     <Compile Include="Model\Migrate.cs" />
