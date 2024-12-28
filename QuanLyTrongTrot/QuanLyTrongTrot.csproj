@@ -84,6 +84,7 @@
     <Compile Include="View\BanDoPage.xaml.cs">
       <DependentUpon>BanDoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\BaseView.cs" />
     <Compile Include="View\GiongCayPage.xaml.cs">
       <DependentUpon>GiongCayPage.xaml</DependentUpon>
     </Compile>

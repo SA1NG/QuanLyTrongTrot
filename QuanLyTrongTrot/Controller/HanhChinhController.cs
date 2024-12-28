@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyTrongTrot.Controller
 {
-    partial class HanhChinhController
+    partial class HanhChinhController: BaseController
     {
         protected override ViewDonVi CreateEntity() => new ViewDonVi { CapDoID = DonVi.CapHanhChinhDangXuLy };
         public object Add(ViewDonVi one) => View(new EditContext { Model = one, Action = EditActions.Insert });
