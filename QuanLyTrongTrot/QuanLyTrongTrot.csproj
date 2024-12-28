@@ -74,8 +74,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Controller\DoiMatKhau.cs" />
     <Compile Include="Controller\HanhChinhController.cs" />
+    <Compile Include="Controller\HomeController.cs" />
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Converter.cs" />
+    <Compile Include="Model\Account.cs" />
     <Compile Include="Model\DonVi.cs" />
     <Compile Include="Model\Migrate.cs" />
     <Compile Include="Model\Provider.cs" />

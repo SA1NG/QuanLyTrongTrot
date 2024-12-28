@@ -16,7 +16,7 @@ namespace QuanLyTrongTrot.Controller
     class BaseController : System.Mvc.Controller
     {
         public Provider Provider => Provider.Current;
-        public object Error(int code, string message)
+        public virtual object Error(int code, string message)
         {
             return new { ErrorCode = code, ErrorMessage = message };
         }
