@@ -74,10 +74,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\BaseController.cs" />
+    <Compile Include="Controller\HanhChinhController.cs" />
     <Compile Include="Converter.cs" />
-    <Compile Include="Model\CapDoHanhChinhProvider.cs" />
     <Compile Include="Model\DonVi.cs" />
-    <Compile Include="Model\DonViHanhChinhProvider.cs" />
     <Compile Include="Model\Migrate.cs" />
     <Compile Include="Model\Provider.cs" />
     <Compile Include="Model\UpdateContext.cs" />

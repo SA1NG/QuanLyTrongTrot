@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace QuanLyTrongTrot.Controller
 {
-    using Model;
     using QuanLyTrongTrot.Model;
 
     class UpdateContext : EditContext
