@@ -19,7 +19,7 @@ namespace QuanLyTrongTrot.Controller
         {
             return DonVi.DanhSach(DonVi.CapHanhChinhDangXuLy = cap ?? 0);
         }
-        protected virtual void TryDelete(ViewDonVi e)
+        protected override void TryDelete(ViewDonVi e)
         {
             Provider.Exec($"select top(1) id from DonVi where CapTrenID={e.CapDoID}");
             if (Provider.Result.Scalar != null)
@@ -32,13 +32,13 @@ namespace QuanLyTrongTrot.Controller
             DonVi.All.Remove(e);
         }
 
-        protected virtual void TryInsert(ViewDonVi e)
+        protected override void TryInsert(ViewDonVi e)
         {
             Exec(null, e.MaDonVi, e.TenDonVi, e.CapDoID, e.CapTrenID);
             DonVi.All.Clear();
         }
 
-        protected virtual void TryUpdate(ViewDonVi e)
+        protected override void TryUpdate(ViewDonVi e)
         {
             Exec(e.MaDonVi, e.TenDonVi, e.CapDoID, e.CapTrenID);
         }
