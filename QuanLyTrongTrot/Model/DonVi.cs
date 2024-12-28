@@ -7,9 +7,9 @@ using System.Windows.Media;
 
 namespace QuanLyTrongTrot.Model
 {
-    partial class ViewDonVi
+    partial class ViewDonVi : DonViHanhChinh
     {
-        public string TenDayDu => $"{}";
+        public string TenDayDu => $"{TenDonVi}";
     }
     partial class DonVi
     {
@@ -24,13 +24,13 @@ namespace QuanLyTrongTrot.Model
             }
         }
         static public int? CapHanhChinhDangXuLy { get; set; }
-        static public List<ViewDonVi> DanhSach(string cap)
+        static public List<ViewDonVi> DanhSach(int? cap)
         {
             if (cap == null)
                 return All;
 
             var lst = new List<ViewDonVi>();
-            lst.AddRange(All.Where(x => x.TenDayDu == cap).OrderBy(x => x.TenDayDu));
+            lst.AddRange(All.Where(x => x.CapDoID == cap));
             return lst;
         }
 
