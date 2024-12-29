@@ -15,119 +15,99 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using QuanLyTrongTrot.Controller;
+using QuanLyTrongTrot.Model;
 
 namespace QuanLyTrongTrot.View
 {
-	/// <summary>
-	/// Interaction logic for HanhChinhPage.xaml
-	/// </summary>
-	public partial class HanhChinhPage : UserControl
-	{
-        // Chuỗi kết nối tới cơ sở dữ liệu
-        string connectstring = @"LAPTOP - ULJ4Q7AM\KTPMUD20241; Initial Catalog = QuanLyTrongTrot; Persist Security Info = True; User ID = mailinh; Trust Server Certificate = True";
+    /// <summary>
+    /// Interaction logic for HanhChinhPage.xaml
+    /// </summary>
+    public partial class HanhChinhPage : UserControl
+    {
+        private HanhChinhController _controller;
+        private CapDoHanhChinh _selectedItem;
+        private DonViHanhChinh _selectedItem1;
 
         public HanhChinhPage()
         {
             InitializeComponent();
-           LoadData();  // Gọi hàm LoadData để tải dữ liệu
+            _controller = new HanhChinhController(new Provider()); // Thay bằng lớp provider cụ thể
+            LoadData();
         }
 
-        // Hàm tải dữ liệu từ SQL Server vào DataGrid
+        /// <summary>
+        /// Tải dữ liệu ban đầu
+        /// </summary>
         private void LoadData()
         {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectstring))
-                {
-                    connection.Open();  // Mở kết nối
+            var data = _controller.GetCapDoHanhChinh();
+            dataGridHanhChinh.ItemsSource = data;
+        }
 
-                    string query = "SELECT d.MaDonVi, d.TenDonVi, c.TenCapDo, d.CapTrenID FROM DonViHanhChinh d " +
-                                   "JOIN CapDoHanhChinh c ON d.CapDoID = c.ID";  // Câu lệnh SQL truy vấn dữ liệu
-
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
-                    DataTable dataTable = new DataTable();
-                    dataAdapter.Fill(dataTable);  // Lưu dữ liệu vào DataTable
-
-                   
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
-            }
-        } 
-
-        // Hàm thêm đơn vị hành chính mới
-        private void AddDonVi(string maDonVi, string tenDonVi, int capDoID, string capTrenID)
+        /// <summary>
+        /// Xử lý khi nhấn nút tìm kiếm
+        /// </summary>
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var keyword = txtSearch.Text.Trim();
+            var searchResult = _controller.SearchHanhChinh(keyword);
+            dataGridHanhChinh.ItemsSource = searchResult;
+        }
+
+        /// <summary>
+        /// Xử lý khi chọn một dòng trong bảng
+        /// </summary>
+        private void DataGridHanhChinh_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            _selectedItem = dataGridHanhChinh.SelectedItem as HanhChinhModel;
+        }
+
+        /// <summary>
+        /// Xử lý khi nhấn nút thêm mới
+        /// </summary>
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var newItem = new HanhChinhModel
             {
-                using (SqlConnection connection = new SqlConnection(connectstring))
-                {
-                    connection.Open();  // Mở kết nối
+                TenCapDo = "Cấp độ mới",
+                MaDonVi = "MDV_NEW",
+                TenDonVi = "Đơn vị mới",
+                CapDoID = 0,
+                CapTrenID = null
+            };
 
-                    string query = "INSERT INTO DonViHanhChinh (MaDonVi, TenDonVi, CapDoID, CapTrenID) " +
-                                   "VALUES (@MaDonVi, @TenDonVi, @CapDoID, @CapTrenID)";  // Câu lệnh SQL thêm dữ liệu
-
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@MaDonVi", maDonVi);
-                    command.Parameters.AddWithValue("@TenDonVi", tenDonVi);
-                    command.Parameters.AddWithValue("@CapDoID", capDoID);
-                    command.Parameters.AddWithValue("@CapTrenID", capTrenID);
-
-                    command.ExecuteNonQuery();  // Thực thi câu lệnh SQL
-                    MessageBox.Show("Thêm đơn vị hành chính thành công!");
-                }
+            if (_controller.AddHanhChinh(newItem))
+            {
+                MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                LoadData();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Lỗi khi thêm đơn vị: " + ex.Message);
+                MessageBox.Show("Thêm thất bại!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        // Hàm xóa đơn vị hành chính
-        private void DeleteDonVi(string maDonVi)
+        /// <summary>
+        /// Xử lý khi nhấn nút xóa (nếu có thêm nút xóa sau này)
+        /// </summary>
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (_selectedItem == null)
             {
-                using (SqlConnection connection = new SqlConnection(connectstring))
-                {
-                    connection.Open();  // Mở kết nối
-
-                    string query = "DELETE FROM DonViHanhChinh WHERE MaDonVi = @MaDonVi";  // Câu lệnh SQL xóa dữ liệu
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@MaDonVi", maDonVi);
-
-                    command.ExecuteNonQuery();  // Thực thi câu lệnh SQL
-                    MessageBox.Show("Đơn vị hành chính đã được xóa!");
-                }
+                MessageBox.Show("Vui lòng chọn một mục để xóa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-            catch (Exception ex)
+
+            if (_controller.DeleteHanhChinh(_selectedItem.ID))
             {
-                MessageBox.Show("Lỗi khi xóa đơn vị: " + ex.Message);
+                MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                LoadData();
+            }
+            else
+            {
+                MessageBox.Show("Xóa thất bại!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        // Sự kiện khi nhấn nút "Thêm Đơn Vị"
-        private void addbutton_click(object sender)
-        {
-            // lấy thông tin đơn vị từ textbox hoặc các nguồn khác
-            string madonvi = "dv001";
-            string tendonvi = "đơn vị 1";
-            int capdoid = 1;  // chọn cấp độ từ một combobox chẳng hạn
-            string captrenid = null;  // cấp trên có thể là null nếu không có cấp trên
-
-            AddDonVi(madonvi, tendonvi, capdoid, captrenid);  // gọi hàm thêm đơn vị
-            LoadData();  // tải lại dữ liệu sau khi thêm
-        }
-
-        // sự kiện khi nhấn nút "xóa đơn vị"
-         private void deletebutton_click(object sender)
-        {
-           string madonvi = "dv001";  // mã đơn vị cần xóa, lấy từ textbox hoặc các nguồn khác
-
-           DeleteDonVi(madonvi);  // gọi hàm xóa đơn vị
-          LoadData();  // tải lại dữ liệu sau khi xóa
-         }
-}
+    }
 }

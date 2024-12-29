@@ -7,101 +7,30 @@
              mc:Ignorable="d"
              d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
-        <!-- Define Row Structure -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <!-- Main Content -->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="139*"/>
-                <ColumnDefinition Width="61*"/>
-            </Grid.ColumnDefinitions>
-            <GroupBox Background="Snow" Margin="26,106,37,21">
-                <GroupBox.Template>
-                    <ControlTemplate TargetType="GroupBox">
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
-                            <StackPanel>
-                                <!-- Taskbar Tìm Kiếm -->
-                                <DockPanel Margin="7,-4,261,4">
-                                    <Grid Width="300" Height="30" Margin="5">
-                                        <!-- TextBox để nhập tìm kiếm -->
-                                        <TextBox x:Name="txtSearch" VerticalAlignment="Center" Margin="0,0,-29,0" />
-                                        <!-- Placeholder -->
-                                        <TextBlock Text="Tìm kiếm tên đơn vị hành chính theo tên hoặc mã"
-                    Foreground="Gray" 
-                    VerticalAlignment="Center"
-                    Margin="5,0,0,0"
-                    IsHitTestVisible="False"
-                    Visibility="{Binding Text, ElementName=txtSearch, Converter={StaticResource StringToVisibilityConverter}}" />
-                                    </Grid>
-                                    <Button x:Name="btnSearch" Content="Tìm kiếm" Width="94" Height="30" Margin="5" Background="LightPink" />
-                                </DockPanel>
-                                <ContentPresenter Margin="10" />
-                            </StackPanel>
-                        </Border>
-                    </ControlTemplate>
-                </GroupBox.Template>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="240" />
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="240"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <!--ID Cấp độ hành chính -->
-                    <Border Grid.Row="0" Grid.Column="0"  BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBlock Text="ID" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Row="1" Grid.Column="0"  BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBox x:Name="txtID"/>
-                    </Border>
-                    <!--Tên cấp độ hành chính-->
-                    <Border Grid.Row="0" Grid.Column="1"  BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBlock Text="Tên Cấp Độ" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                    <Border Grid.Row="1" Grid.Column="1"  BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBox x:Name="txtTenCapDo"/>
-                    </Border>
-                    <!-- Mã Đơn Vị -->
-                    <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBlock Text="Mã Đơn Vị" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                    <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBox x:Name="txtMadonvi" />
-                    </Border>
 
-                    <!-- Tên Đơn Vị -->
-                    <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBlock Text="Tên Đơn Vị" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                    <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBox x:Name="txtTendonvi" />
-                    </Border>
+        <!-- Taskbar tìm kiếm -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
+            <TextBox x:Name="txtSearch" Width="200" Margin="0,0,10,0" 
+                     PlaceholderText="Nhập từ khóa tìm kiếm..." />
+            <Button Content="Tìm kiếm" Click="SearchButton_Click" />
+            <Button Content="Thêm mới" Margin="10,0,0,0" Click="AddButton_Click" />
+        </StackPanel>
 
-                    <!-- Cấp Độ ID -->
-                    <Border Grid.Row="0" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBlock Text="Cấp Độ ID" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
-                    <Border Grid.Row="1" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBox x:Name="txtCapdoID" />
-                    </Border>
-
-                    <!-- Cấp Trên ID -->
-                    <Border Grid.Row="0" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBlock Text="Cấp Trên ID" VerticalAlignment="Center" />
-                    </Border>
-                    <Border Grid.Row="1" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Padding="5">
-                        <TextBox x:Name="txtCaptrenID" />
-                    </Border>
-                </Grid>
-            </GroupBox>
-        </Grid>
+        <!-- Bảng hiển thị dữ liệu -->
+        <DataGrid x:Name="dataGridHanhChinh" Grid.Row="1" AutoGenerateColumns="False" Margin="10" 
+                  SelectionChanged="DataGridHanhChinh_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50" />
+                <DataGridTextColumn Header="Tên Cấp Độ" Binding="{Binding TenCapDo}" Width="150" />
+                <DataGridTextColumn Header="Mã Đơn Vị" Binding="{Binding MaDonVi}" Width="150" />
+                <DataGridTextColumn Header="Tên Đơn Vị" Binding="{Binding TenDonVi}" Width="200" />
+                <DataGridTextColumn Header="Cấp Độ ID" Binding="{Binding CapDoID}" Width="100" />
+                <DataGridTextColumn Header="Cấp Trên ID" Binding="{Binding CapTrenID}" Width="100" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -1,63 +1,148 @@
-﻿using QuanLyTrongTrot.Model;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using QuanLyTrongTrot.Model;
 
 namespace QuanLyTrongTrot.Controller
 {
-    partial class HanhChinhController : DataController<ViewDonVi> 
+    public class HanhChinhController
     {
-        protected override ViewDonVi CreateEntity() => new ViewDonVi { CapDoID = (int)DonVi.CapHanhChinhDangXuLy };
-        public object Add(ViewDonVi one) => View(new EditContext { Model = one, Action = EditActions.Insert });
-        public override object Index()
+        private readonly Provider _dataProvider;
+
+        public HanhChinhController(Provider dataProvider)
         {
-            return View(Select(null));
+            _dataProvider = dataProvider;
         }
-        protected object Select(int? cap)
+
+        /// <summary>
+        /// Lấy danh sách tất cả các đơn vị hành chính.
+        /// </summary>
+        /// <returns>Danh sách đơn vị hành chính</returns>
+        public List<CapDoHanhChinh> GetCapDoHanhChinh()
         {
-            return DonVi.DanhSach(DonVi.CapHanhChinhDangXuLy = cap ?? 0);
-        }
-        protected override void TryDelete(ViewDonVi e)
-        {
-            Provider.Exec($"select top(1) id from DonVi where CapTrenID={e.CapDoID}");
-            if (Provider.Result.Scalar != null)
+            var query = "SELECT ID, TenCapDo FROM CapDoHanhChinh";
+            var dataTable = _dataProvider.Load(query);
+
+            return dataTable.AsEnumerable().Select(row => new CapDoHanhChinh
             {
-                UpdateContext.Message = $"Cần xóa tất cả đơn vị con của {e.TenDonVi}";
-                return;
-            }
-
-            Exec(e.MaDonVi);
-            DonVi.All.Remove(e);
+                ID = row.Field<int>("ID"),
+                TenCapDo = row.Field<string>("TenCapDo"),
+            }).ToList();
         }
-
-        protected override void TryInsert(ViewDonVi e)
+        public List<DonViHanhChinh> GetDonViHanhChinh()
         {
-            Exec(null, e.MaDonVi, e.TenDonVi, e.CapDoID, e.CapTrenID);
-            DonVi.All.Clear();
-        }
-
-        protected override void TryUpdate(ViewDonVi e)
-        {
-            Exec(e.MaDonVi, e.TenDonVi, e.CapDoID, e.CapTrenID);
-        }
-        // Chức năng tìm kiếm đơn vị hành chính
-        public object Search(string keyword)
-        {
-            if (string.IsNullOrEmpty(keyword))
-                return View(DonVi.All);
-
-            var result = DonVi.All.Where(dv => dv.TenDonVi.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                                                dv.MaDonVi.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-
-            if (!result.Any())
+            var query = "SELECT MaDonVi, TenDonVi, CapDoID, CapTrenID FROM DonViHanhChinh";
+            var dataTable = _dataProvider.Load(query);
+            return dataTable.AsEnumerable().Select(row => new DonViHanhChinh
             {
-                UpdateContext.Message = "Không tìm thấy đơn vị hành chính nào phù hợp.";
-                return View(new List<ViewDonVi>());
-            }
+                MaDonVi = row.Field<string>("MaDonVi"),
+                TenDonVi = row.Field<string>("TenDonVi"),
+                CapDoID = row.Field<int>("CapDoID"),
+                CapTrenID = row.Field<string>("CapTrenID"),
+            }).ToList();
+        }
 
-            return View(result);
+        /// <summary>
+        /// Tìm kiếm đơn vị hành chính theo từ khóa.
+        /// </summary>
+        /// <param name="keyword">Từ khóa tìm kiếm</param>
+        /// <returns>Danh sách đơn vị hành chính khớp với từ khóa</returns>
+        public List<DonViHanhChinh> SearchDonViHanhChinh(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+                return GetDonViHanhChinh();
+
+            keyword = Regex.Escape(keyword);
+
+            var query = $"SELECT MaDonVi, TenDonVi, CapDoID, CapTrenID " +
+                        $"FROM DonViHanhChinh " +
+                        $"WHERE TenDonVi LIKE '%{keyword}%'";
+
+            var dataTable = _dataProvider.Load(query);
+
+            return dataTable.AsEnumerable().Select(row => new DonViHanhChinh
+            {
+                MaDonVi = row.Field<string>("MaDonVi"),
+                TenDonVi = row.Field<string>("TenDonVi"),
+                CapDoID = row.Field<int>("CapDoID"),
+                CapTrenID = row.Field<string>("CapTrenID"),
+            }).ToList();
+        }
+        public List<CapDoHanhChinh> SearchCapDoHanhChinh()
+        {
+            if (string.IsNUllOrWhiteSpace(keyword))
+                return GetCapDoHanhChinh();
+            keyword = Regex.Escape(keyword);
+            var query = $"SELECT ID, TenCapDo " +
+                        $"FROM CapDoHanhChinh " +
+                        $"WHERE TenCapDo LIKE '%{keyword}%'";
+            ar dataTable = _dataProvider.Load(query);
+
+            return dataTable.AsEnumerable().Select(row => new CapDoHanhChinh
+            {
+                ID = row.Field<int>("ID"),
+                TenCapDo = row.Field<string>("TenCapDo"),
+            }).ToList();
+        }
+            /// <summary>
+            /// Thêm một đơn vị hành chính mới.
+            /// </summary>
+            /// <param name="model">Dữ liệu của đơn vị hành chính</param>
+            /// <returns>Kết quả thêm (true/false)</returns>
+            public bool AddCapDoHanhChinh(CapDoHanhChinh model)
+        {
+            var query = $"INSERT INTO CapDoHanhChinh (ID, TenCapDo) " +
+                        $"VALUES ('{model.ID}', '{model.TenCapDo}')";
+
+            return _dataProvider.Exec(query) != null;
+        }
+        public bool AddDonViHanhChinh(DonViHanhChinh model)
+        {
+            var query = $"INSERT INTO DonViHanhChinh (MaDonVi, TenDonVi, CapDoID, CapTrenID) " +
+                        $"VALUES ('{model.MaDonVi}', '{model.TenDonVi}', '{model.CapDoID}', '{model.CapTrenID}')";
+            return _dataProvider.Exec(query) != null;
+        }
+
+        /// <summary>
+        /// Xóa một đơn vị hành chính.
+        /// </summary>
+        /// <param name="id">ID của đơn vị hành chính</param>
+        /// <returns>Kết quả xóa (true/false)</returns>
+        public bool DeleteCapDoHanhChinh(int id)
+        {
+            var query = $"DELETE FROM CapDoHanhChinh WHERE ID = {id}";
+
+            return _dataProvider.Exec(query) != null;
+        }
+        public bool DeleteDonViHanhChinh(int ID)
+        {
+            var query = $"DELETE FROM DonViHanhChinh WHERE CapDoID = {ID}";
+            return _dataProvider.Exec(query) == null;
+        }
+
+        /// <summary>
+        /// Cập nhật thông tin một đơn vị hành chính.
+        /// </summary>
+        /// <param name="model">Dữ liệu của đơn vị hành chính</param>
+        /// <returns>Kết quả cập nhật (true/false)</returns>
+        public bool UpdateCapDoHanhChinh(CapDoHanhChinh model)
+        {
+            var query = $"UPDATE CapDoHanhChinh " +
+                        $"SET TenCapDo = '{model.TenCapDo}'" +
+                        $"WHERE ID = {model.ID}";
+
+            return _dataProvider.Exec(query) != null;
+        }
+        public bool UpdateDonViHanhChinh(DonViHanhChinh model)
+        {
+            var query = $"UPDATE DonViHanhChinh " +
+                        $"SET MaDonVi = '{model.MaDonVi}', TenDonVi = '{model.TenDonVi}', CapTrenID = '{model.CapTrenID}'" +
+                        $"WHERE CapDoID = {model.CapDoID}";
         }
     }
+
 }
