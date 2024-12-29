@@ -62,6 +62,31 @@
                                     <!-- <materialDesign:PackIcon Kind="ChevronDown" Height="25" Width="25" VerticalAlignment="Bottom" HorizontalAlignment="Right"/> -->
                                 </WrapPanel>
                             </Button>
+                            <StackPanel Name ="HanhChinhConButton" Visibility="Collapsed">
+                                <!--nut con hanh chinh-->
+                                <Button Style="{StaticResource MaterialDesignFlatButton}"
+Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+Width="190" Height="40" Margin="0 5 0 0" 
+                                    Click="CapDoHanhChinhButton_Click">
+                                    <WrapPanel Width="190">
+                                        <materialDesign:PackIcon Kind="Apps" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                        <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+    Cấp Độ Hành Chính
+                                        </TextBlock>
+                                    </WrapPanel>
+                                </Button>
+                                <Button Style="{StaticResource MaterialDesignFlatButton}"
+Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"
+Width="190" Height="40" Margin="0 5 0 0"
+                                    Click = "DonViHanhChinhButton_Click">
+                                    <WrapPanel Width="190">
+                                        <materialDesign:PackIcon Kind="Apps" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
+                                        <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
+    Dơn Vị Hành Chính
+                                        </TextBlock>
+                                    </WrapPanel>
+                                </Button>
+                            </StackPanel>
                             <!--nut giong cay trong-->
                             <Button Style="{StaticResource MaterialDesignFlatButton}"
     Foreground="{DynamicResource PrimaryHueLightForegroundBrush}" 

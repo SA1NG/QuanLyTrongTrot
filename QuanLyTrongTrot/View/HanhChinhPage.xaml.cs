@@ -34,7 +34,6 @@ namespace QuanLyTrongTrot.View
             InitializeComponent();
             _controller = new HanhChinhController(new Provider()); // Thay bằng lớp provider cụ thể
             LoadData();
-            LoadData1();
         }
 
         /// <summary>
@@ -43,11 +42,12 @@ namespace QuanLyTrongTrot.View
         private void LoadData()
         {
             var data = _controller.GetCapDoHanhChinh();
-            dataGridHanhChinh.ItemsSource = data;
+            Console.WriteLine("Dữ liệu trả về:");
+            Console.WriteLine(data);
         }
         private void LoadData1() {
             var data = _controller.GetDonViHanhChinh();
-            dataGridHanhChinh.ItemsSource = data;
+            HanhChinhDataGrid.ItemsSource = data;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace QuanLyTrongTrot.View
         {
             var keyword = txtSearch.Text.Trim();
             var searchResult = _controller.SearchCapDoHanhChinh(keyword);
-            dataGridHanhChinh.ItemsSource = searchResult;
+            HanhChinhDataGrid.ItemsSource = searchResult;
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace QuanLyTrongTrot.View
         /// </summary>
         private void DataGridHanhChinh_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            _selectedItem = dataGridHanhChinh.SelectedItem as CapDoHanhChinh;
+            _selectedItem = HanhChinhDataGrid.SelectedItem as CapDoHanhChinh;
         }
 
         /// <summary>

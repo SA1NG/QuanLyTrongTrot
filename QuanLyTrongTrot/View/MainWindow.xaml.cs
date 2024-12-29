@@ -65,7 +65,7 @@ namespace QuanLyTrongTrot
 		{
 			//doi trang thai
 			HanhChinhMoRong = !HanhChinhMoRong;
-			//HanhChinhConButton.Visibility = HanhChinhMoRong ? Visibility.Visible : Visibility.Collapsed;
+			HanhChinhConButton.Visibility = HanhChinhMoRong ? Visibility.Visible : Visibility.Collapsed;
 			MainPage.Content = hanh_chinh_page;
 		}
 

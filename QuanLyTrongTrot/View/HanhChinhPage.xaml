@@ -12,28 +12,30 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!-- Taskbar tìm kiếm -->
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
-            <Grid>
-                <TextBox x:Name="txtSearch" Width="200" Margin="0,0,10,0"  />
-                <TextBlock x:Name="txtSearchPlaceholder" Text="Nhập từ khóa tìm kiếm..." 
-                           VerticalAlignment="Center" HorizontalAlignment="Left" 
-                           Margin="5,0,0,0" Foreground="Gray" />
-            </Grid>
-            <Button Content="Tìm kiếm" Click="SearchButton_Click" />
-            <Button Content="Thêm mới" Margin="10,0,0,0" Click="AddButton_Click" />
-        </StackPanel>
+        <!-- Tiêu đề -->
+        <TextBlock Grid.Row="0" Text="Danh sách cấp độ hành chính"
+                   FontWeight="Bold" FontSize="16"
+                   HorizontalAlignment="Center" Margin="10" />
 
         <!-- Bảng hiển thị dữ liệu -->
-        <DataGrid x:Name="dataGridHanhChinh" Grid.Row="1" AutoGenerateColumns="False" Margin="10" 
-                  SelectionChanged="DataGridHanhChinh_SelectionChanged">
+        <DataGrid Grid.Row="1"
+                  x:Name="HanhChinhDataGrid"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  IsReadOnly="True"
+                  Margin="10">
+            <!-- Định nghĩa cột -->
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="50" />
-                <DataGridTextColumn Header="Tên Cấp Độ" Binding="{Binding TenCapDo}" Width="150" />
-                <DataGridTextColumn Header="Mã Đơn Vị" Binding="{Binding MaDonVi}" Width="150" />
-                <DataGridTextColumn Header="Tên Đơn Vị" Binding="{Binding TenDonVi}" Width="200" />
-                <DataGridTextColumn Header="Cấp Độ ID" Binding="{Binding CapDoID}" Width="100" />
-                <DataGridTextColumn Header="Cấp Trên ID" Binding="{Binding CapTrenID}" Width="100" />
+                <!-- Cột ID -->
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding ID}"
+                                    Width="100" />
+
+                <!-- Cột Tên Cấp Độ -->
+                <DataGridTextColumn Header="Tên Cấp Độ"
+                                    Binding="{Binding TenCapDo}"
+                                    Width="*" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
