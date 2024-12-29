@@ -16,7 +16,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
             <Grid>
                 <TextBox x:Name="txtSearch" Width="200" Margin="0,0,10,0" 
-                         TextChanged="TextBox_TextChanged" />
+                        />
                 <TextBlock x:Name="txtSearchPlaceholder" Text="Nhập từ khóa tìm kiếm..." 
                            VerticalAlignment="Center" HorizontalAlignment="Left" 
                            Margin="5,0,0,0" Foreground="Gray" />
