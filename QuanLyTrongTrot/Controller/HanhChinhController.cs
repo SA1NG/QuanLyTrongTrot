@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using QuanLyTrongTrot.Model;
+using System.Data;
 
 namespace QuanLyTrongTrot.Controller
 {
@@ -72,28 +73,43 @@ namespace QuanLyTrongTrot.Controller
                 CapTrenID = row.Field<string>("CapTrenID"),
             }).ToList();
         }
-        public List<CapDoHanhChinh> SearchCapDoHanhChinh()
+        public List<CapDoHanhChinh> SearchCapDoHanhChinh(string keyword)
         {
-            if (string.IsNUllOrWhiteSpace(keyword))
+            if (string.IsNullOrWhiteSpace(keyword))
                 return GetCapDoHanhChinh();
-            keyword = Regex.Escape(keyword);
-            var query = $"SELECT ID, TenCapDo " +
-                        $"FROM CapDoHanhChinh " +
-                        $"WHERE TenCapDo LIKE '%{keyword}%'";
-            ar dataTable = _dataProvider.Load(query);
 
-            return dataTable.AsEnumerable().Select(row => new CapDoHanhChinh
+            keyword = Regex.Escape(keyword);
+
+            var query = "SELECT ID, TenCapDo " +
+                        "FROM CapDoHanhChinh " +
+                        "WHERE TenCapDo LIKE @keyword";
+
+            var parameters = new Dictionary<string, object>
+    {
+        { "@keyword", $"%{keyword}%" }
+    };
+
+            var dataTable = _dataProvider.Load(query);
+
+            var result = new List<CapDoHanhChinh>();
+
+            foreach (DataRow row in dataTable.Rows)
             {
-                ID = row.Field<int>("ID"),
-                TenCapDo = row.Field<string>("TenCapDo"),
-            }).ToList();
+                result.Add(new CapDoHanhChinh
+                {
+                    ID = Convert.ToInt32(row["ID"]),
+                    TenCapDo = row["TenCapDo"].ToString(),
+                });
+            }
+
+            return result;
         }
-            /// <summary>
-            /// Thêm một đơn vị hành chính mới.
-            /// </summary>
-            /// <param name="model">Dữ liệu của đơn vị hành chính</param>
-            /// <returns>Kết quả thêm (true/false)</returns>
-            public bool AddCapDoHanhChinh(CapDoHanhChinh model)
+        /// <summary>
+        /// Thêm một đơn vị hành chính mới.
+        /// </summary>
+        /// <param name="model">Dữ liệu của đơn vị hành chính</param>
+        /// <returns>Kết quả thêm (true/false)</returns>
+        public bool AddCapDoHanhChinh(CapDoHanhChinh model)
         {
             var query = $"INSERT INTO CapDoHanhChinh (ID, TenCapDo) " +
                         $"VALUES ('{model.ID}', '{model.TenCapDo}')";
@@ -138,10 +154,12 @@ namespace QuanLyTrongTrot.Controller
             return _dataProvider.Exec(query) != null;
         }
         public bool UpdateDonViHanhChinh(DonViHanhChinh model)
-        {
-            var query = $"UPDATE DonViHanhChinh " +
-                        $"SET MaDonVi = '{model.MaDonVi}', TenDonVi = '{model.TenDonVi}', CapTrenID = '{model.CapTrenID}'" +
-                        $"WHERE CapDoID = {model.CapDoID}";
+{
+            var query = "UPDATE DonViHanhChinh " +
+                        "SET MaDonVi = @MaDonVi, TenDonVi = @TenDonVi, CapTrenID = @CapTrenID " +
+                        "WHERE CapDoID = @CapDoID";
+
+            return _dataProvider.Exec(query) != null;
         }
     }
 
