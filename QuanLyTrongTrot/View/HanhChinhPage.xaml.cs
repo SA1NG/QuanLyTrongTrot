@@ -53,12 +53,12 @@ namespace QuanLyTrongTrot.View
         /// <summary>
         /// Xử lý khi nhấn nút tìm kiếm
         /// </summary>
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
-        {
-            var keyword = txtSearch.Text.Trim();
-            var searchResult = _controller.SearchCapDoHanhChinh(keyword);
-            HanhChinhDataGrid.ItemsSource = searchResult;
-        }
+        //private void SearchButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var keyword = txtSearch.Text.Trim();
+        //    var searchResult = _controller.SearchCapDoHanhChinh(keyword);
+        //    HanhChinhDataGrid.ItemsSource = searchResult;
+        //}
 
         /// <summary>
         /// Xử lý khi chọn một dòng trong bảng
