@@ -193,7 +193,7 @@ Width="190" Height="40" Margin="0 5 0 0" >
                                     <WrapPanel Width="190">
                                         <materialDesign:PackIcon Kind="Apps" VerticalAlignment="Center" Height="30" Width="30" Margin="0 0 10 0" />
                                         <TextBlock Width="110" VerticalAlignment="Bottom" FontSize="15">
-    Phân Loại
+    Thuốc BVTV
                                         </TextBlock>
                                     </WrapPanel>
                                 </Button>
