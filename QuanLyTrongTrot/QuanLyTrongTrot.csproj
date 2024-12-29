@@ -73,17 +73,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Actors\ActionContext.cs" />
-    <Compile Include="Actors\User.cs" />
-    <Compile Include="Controller\BaseController.cs" />
-    <Compile Include="Controller\DoiMatKhau.cs" />
     <Compile Include="Controller\HanhChinhController.cs" />
-    <Compile Include="Controller\HomeController.cs" />
-    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Converter.cs" />
-    <Compile Include="Model\Account.cs" />
-    <Compile Include="Model\ActionManager.cs" />
-    <Compile Include="Model\Config.cs" />
     <Compile Include="Model\DonVi.cs" />
     <Compile Include="Model\Migrate.cs" />
     <Compile Include="Model\Provider.cs" />
@@ -211,8 +202,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App_Data\Actions.json" />
-    <None Include="App_Data\Config.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
