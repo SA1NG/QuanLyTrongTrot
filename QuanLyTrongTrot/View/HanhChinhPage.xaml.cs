@@ -34,6 +34,7 @@ namespace QuanLyTrongTrot.View
             InitializeComponent();
             _controller = new HanhChinhController(new Provider()); // Thay bằng lớp provider cụ thể
             LoadData();
+            LoadData1();
         }
 
         /// <summary>
@@ -44,6 +45,10 @@ namespace QuanLyTrongTrot.View
             var data = _controller.GetCapDoHanhChinh();
             dataGridHanhChinh.ItemsSource = data;
         }
+        private void LoadData1() {
+            var data = _controller.GetDonViHanhChinh();
+            dataGridHanhChinh.ItemsSource = data;
+        }
 
         /// <summary>
         /// Xử lý khi nhấn nút tìm kiếm
@@ -51,7 +56,7 @@ namespace QuanLyTrongTrot.View
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             var keyword = txtSearch.Text.Trim();
-            var searchResult = _controller.SearchHanhChinh(keyword);
+            var searchResult = _controller.SearchCapDoHanhChinh(keyword);
             dataGridHanhChinh.ItemsSource = searchResult;
         }
 
@@ -60,7 +65,7 @@ namespace QuanLyTrongTrot.View
         /// </summary>
         private void DataGridHanhChinh_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            _selectedItem = dataGridHanhChinh.SelectedItem as HanhChinhModel;
+            _selectedItem = dataGridHanhChinh.SelectedItem as CapDoHanhChinh;
         }
 
         /// <summary>
@@ -68,16 +73,15 @@ namespace QuanLyTrongTrot.View
         /// </summary>
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var newItem = new HanhChinhModel
+            var newItem = new DonViHanhChinh
             {
-                TenCapDo = "Cấp độ mới",
                 MaDonVi = "MDV_NEW",
                 TenDonVi = "Đơn vị mới",
                 CapDoID = 0,
                 CapTrenID = null
             };
 
-            if (_controller.AddHanhChinh(newItem))
+            if (_controller.AddDonViHanhChinh(newItem))
             {
                 MessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadData();
@@ -99,7 +103,7 @@ namespace QuanLyTrongTrot.View
                 return;
             }
 
-            if (_controller.DeleteHanhChinh(_selectedItem.ID))
+            if (_controller.DeleteDonViHanhChinh(_selectedItem.ID))
             {
                 MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadData();
