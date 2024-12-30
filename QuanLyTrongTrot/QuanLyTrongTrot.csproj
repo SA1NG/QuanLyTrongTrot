@@ -104,6 +104,9 @@
     <Compile Include="View\ThuocbvtvPage.xaml.cs">
       <DependentUpon>ThuocbvtvPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ThuốcBVTV.xaml.cs">
+      <DependentUpon>ThuốcBVTV.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TrangChuPage.xaml.cs">
       <DependentUpon>TrangChuPage.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ThuocbvtvPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThuốcBVTV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
