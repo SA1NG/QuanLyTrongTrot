@@ -25,18 +25,20 @@
                 </DataGrid.Columns>
             </DataGrid>
             <DataGrid x:Name="DonViHanhChinh" AutoGenerateColumns="True" SelectionChanged="DonViHanhChinhButton_Click" Visibility="Visible">
-                <DataGrid.Columns Header ="Mã Đơn Vị"
-                                  Binding="{Binding MaDonVi}"
-                                  Width="*"/>
-                <DataGrid.Columns Header ="Tên Đơn Vị"
-                                  Binding="{Binding TenDonVi}"
-                                  Width="*"/>
-                <DataGrid.Columns Header="Cấp Độ ID"
-                                  Binding="{Binding CapDoID}"
-                                  Width="Auto"/>
-                <DataGrid.Columns Header="Cấp Trên ID"
-                                  Binding="{Binding CapTrenID}"
-                                  Width="Auto"/>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã Đơn Vị"
+                                        Binding="{Binding ID}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Tên Đơn Vị"
+                                        Binding="{Binding TenDonVi}"
+                                        Width="*"/>
+                    <DataGridTextColumn Header="Cấp Độ ID"
+                                        Binding="{Binding CapDoID}"
+                                        Width="Auto"/>
+                    <DataGridTextColumn Header="Cấp Trên ID" 
+                                        Binding="{Binding CapTrenID}"
+                                        Width="*"/>
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
     </Grid>

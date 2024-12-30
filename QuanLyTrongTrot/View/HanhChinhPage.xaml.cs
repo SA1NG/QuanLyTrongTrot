@@ -62,9 +62,15 @@ namespace QuanLyTrongTrot.View
         /// <summary>
         /// Xử lý khi chọn một dòng trong bảng
         /// </summary>
-        private void DataGridHanhChinh_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void CapDoHanhChinh_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            _selectedItem = HanhChinhDataGrid.SelectedItem as CapDoHanhChinh;
+            if(CapDoHanhChinh.SelectedItems is Binding selectedItem)
+            {
+                LoadData1();
+                CapDoHanhChinh.Visibility = Visibility.Collapsed;
+                DonViHanhChinh.Visibility = Visibility.Visible;
+                BackButton.Visibility = Visibility.Visible;
+            }
         }
 
         /// <summary>
