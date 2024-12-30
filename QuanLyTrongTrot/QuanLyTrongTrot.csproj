@@ -101,9 +101,6 @@
     <Compile Include="View\SinhVatGayHaiPage.xaml.cs">
       <DependentUpon>SinhVatGayHaiPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ThuocbvtvPage.xaml.cs">
-      <DependentUpon>ThuocbvtvPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ThuốcBVTV.xaml.cs">
       <DependentUpon>ThuốcBVTV.xaml</DependentUpon>
     </Compile>
