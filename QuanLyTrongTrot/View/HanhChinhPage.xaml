@@ -11,32 +11,33 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
+        <Button x:Name="BackButton" Click="BackButton_Click" Visibility="Collapsed" Grid.Row="0"/>
         <!-- Tiêu đề -->
-        <TextBlock Grid.Row="0" Text="Danh sách cấp độ hành chính"
-                   FontWeight="Bold" FontSize="16"
-                   HorizontalAlignment="Center" Margin="10" />
-
-        <!-- Bảng hiển thị dữ liệu -->
-        <DataGrid Grid.Row="1"
-                  x:Name="HanhChinhDataGrid"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  IsReadOnly="True"
-                  Margin="10">
-            <!-- Định nghĩa cột -->
-            <DataGrid.Columns>
-                <!-- Cột ID -->
-                <DataGridTextColumn Header="ID"
-                                    Binding="{Binding ID}"
-                                    Width="100" />
-
-                <!-- Cột Tên Cấp Độ -->
-                <DataGridTextColumn Header="Tên Cấp Độ"
-                                    Binding="{Binding TenCapDo}"
-                                    Width="*" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="CapDoHanhChinh" AutoGenerateColumns="True" SelectionChanged="CDHC_SelectionChanged" Visibility="Visible">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" 
+                                        Binding="{Binding ID}"
+                                        Width="300"/>
+                    <DataGridTextColumn Header="Tên Cấp Độ"
+                                        Binding="{Binding TenCapDo}"
+                                        Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="DonViHanhChinh" AutoGenerateColumns="True" SelectionChanged="DonViHanhChinhButton_Click" Visibility="Visible">
+                <DataGrid.Columns Header ="Mã Đơn Vị"
+                                  Binding="{Binding MaDonVi}"
+                                  Width="*"/>
+                <DataGrid.Columns Header ="Tên Đơn Vị"
+                                  Binding="{Binding TenDonVi}"
+                                  Width="*"/>
+                <DataGrid.Columns Header="Cấp Độ ID"
+                                  Binding="{Binding CapDoID}"
+                                  Width="Auto"/>
+                <DataGrid.Columns Header="Cấp Trên ID"
+                                  Binding="{Binding CapTrenID}"
+                                  Width="Auto"/>
+            </DataGrid>
+        </Grid>
     </Grid>
 </UserControl>

@@ -42,12 +42,11 @@ namespace QuanLyTrongTrot.View
         private void LoadData()
         {
             var data = _controller.GetCapDoHanhChinh();
-            Console.WriteLine("Dữ liệu trả về:");
-            Console.WriteLine(data);
+            CapDoHanhChinh.ItemsSource = data;
         }
         private void LoadData1() {
             var data = _controller.GetDonViHanhChinh();
-            HanhChinhDataGrid.ItemsSource = data;
+            DonViHanhChinh.ItemsSource = data;
         }
 
         /// <summary>
