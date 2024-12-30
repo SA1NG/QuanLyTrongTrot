@@ -15,14 +15,11 @@ using System.Windows.Shapes;
 
 namespace QuanLyTrongTrot.View
 {
-	/// <summary>
-	/// Interaction logic for ThuocbvtvPage.xaml
-	/// </summary>
-	public partial class ThuocbvtvPage : UserControl
-	{
-		public ThuocbvtvPage()
-		{
-			InitializeComponent();
-		}
-	}
-}
+
+    /// <summary>
+    /// Interaction logic for HanhChinhPage.xaml
+    /// </summary>
+    public partial class ThuocbvtvPage : UserControl
+    {
+    }
+ }
