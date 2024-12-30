@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 
     namespace QuanLyTrongTrot.View
     {
-        public partial class ThuocbvtvPage : UserControl
+        public partial class ThuócBVTV  : UserControl
         {
            
 

@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Globalization;
 using QuanLyTrongTrot.Controller;
 using QuanLyTrongTrot.Model;
+using QuanLyTrongTrot.Utils;
 
 namespace QuanLyTrongTrot.View
 {
@@ -41,12 +42,13 @@ namespace QuanLyTrongTrot.View
         /// </summary>
         private void LoadData()
         {
+            Dbconnection context = new Dbconnection();
             var data = _controller.GetCapDoHanhChinh();
-            CapDoHanhChinh.ItemsSource = data;
+            CapDoHanhChinh.ItemsSource = context.CapDoHanhChinh.ToList();
         }
         private void LoadData1() {
-            var data = _controller.GetDonViHanhChinh();
-            DonViHanhChinh.ItemsSource = data;
+            Dbconnection context = new Dbconnection();
+            DonViHanhChinh.ItemsSource = context.DonViHanhChinh.ToList();
         }
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace QuanLyTrongTrot.View
         /// <summary>
         /// Xử lý khi chọn một dòng trong bảng
         /// </summary>
-        private void CapDoHanhChinh_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CDHC_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(CapDoHanhChinh.SelectedItems is Binding selectedItem)
             {

@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button x:Name="BackButton" Click="BackButton_Click" Visibility="Collapsed" Grid.Row="0"/>
+        <Button x:Name="BackButton"  Visibility="Collapsed" Grid.Row="0"/>
         <!-- Tiêu đề -->
         <Grid Grid.Row="1">
             <DataGrid x:Name="CapDoHanhChinh" AutoGenerateColumns="True" SelectionChanged="CDHC_SelectionChanged" Visibility="Visible">
@@ -24,7 +24,7 @@
                                         Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="DonViHanhChinh" AutoGenerateColumns="True" SelectionChanged="DonViHanhChinhButton_Click" Visibility="Visible">
+            <DataGrid x:Name="DonViHanhChinh" AutoGenerateColumns="True"  Visibility="Visible">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã Đơn Vị"
                                         Binding="{Binding ID}"
