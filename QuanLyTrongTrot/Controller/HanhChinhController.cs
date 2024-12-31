@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using QuanLyTrongTrot.Model;
 using System.Data;
+using QuanLyTrongTrot.Utils;
 
 namespace QuanLyTrongTrot.Controller
 {
     public class HanhChinhController
     {
-        private readonly Provider _dataProvider;
+        private  Dbconnection _dataProvider = new Dbconnection();
 
-        public HanhChinhController(Provider dataProvider)
+        public HanhChinhController(Dbconnection dataProvider)
         {
             _dataProvider = dataProvider;
         }
